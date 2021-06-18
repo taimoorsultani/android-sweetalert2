@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Android-Sweetaler2</string>
+    <string name="app_name">Android-Sweetalert2</string>
+    <string name="test_sweet_alert">Test Sweet Alert</string>
+    <string name="loading_sweetalert">Loading Sweetalert</string>
+    <string name="basic_sweetalert">Basic Sweetalert</string>
+    <string name="error_sweetalert">Error Sweetalert</string>
+    <string name="delete_confirmation_sweetalert">Delete Confirmation Sweetalert</string>
+    <string name="custom_sweetalert">Custom Sweetalert</string>
 </resources>
