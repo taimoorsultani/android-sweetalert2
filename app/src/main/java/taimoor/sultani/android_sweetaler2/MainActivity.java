@@ -5,125 +5,236 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
-import taimoor.sultani.customlog.CustomLogs;
+import taimoor.sultani.sweetalert2.Constants;
 import taimoor.sultani.sweetalert2.Sweetalert;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button loading_sweetalert, basic_sweetalert, error_sweetalert, delete_confirmation_sweetalert, custom_sweetalert;
+    private int i = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loading_sweetalert = findViewById(R.id.loading_sweetalert);
-        basic_sweetalert = findViewById(R.id.basic_sweetalert);
-        error_sweetalert = findViewById(R.id.error_sweetalert);
-        delete_confirmation_sweetalert = findViewById(R.id.delete_confirmation_sweetalert);
-        custom_sweetalert = findViewById(R.id.custom_sweetalert);
+        int[] btnIds = {
+                R.id.basic_test, R.id.styled_text_and_stroke, R.id.basic_test_without_buttons, R.id.under_text_test,
+                R.id.error_text_test, R.id.success_text_test, R.id.warning_confirm_test, R.id.warning_cancel_test,
+                R.id.custom_img_test, R.id.progress_dialog, R.id.neutral_btn_test, R.id.disabled_btn_test,
+                R.id.custom_view_test, R.id.custom_btn_colors_test
+        };
+        for (Integer id : btnIds) {
+            findViewById(id).setOnClickListener(this);
+            findViewById(id).setOnTouchListener(Constants.FOCUS_TOUCH_LISTENER);
+        }
 
-        loading_sweetalert.setOnClickListener(this);
-        basic_sweetalert.setOnClickListener(this);
-        error_sweetalert.setOnClickListener(this);
-        delete_confirmation_sweetalert.setOnClickListener(this);
-        custom_sweetalert.setOnClickListener(this);
+        CheckBox dark_style = findViewById(R.id.dark_style);
+        dark_style.setOnCheckedChangeListener((buttonView, isChecked) -> Sweetalert.DARK_STYLE = isChecked);
     }
 
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public void onClick(View v) {
-        int id = v.getId();
-        CustomLogs.e("Id is: " + id);
-        CustomLogs.d("Id is: " + id);
-        switch (id) {
-            case R.id.loading_sweetalert: {
-                showLoadingSweetalert();
+        switch (v.getId()) {
+            case R.id.basic_test:
+                Sweetalert sd = new Sweetalert(this);
+                sd.setCancelable(true);
+                sd.setCanceledOnTouchOutside(true);
+                sd.setContentText("Here's a message");
+                sd.show();
                 break;
-            }
-            case R.id.basic_sweetalert: {
-                showBasicSweetalert();
+            case R.id.basic_test_without_buttons:
+                Sweetalert sd2 = new Sweetalert(this);
+                sd2.setCancelable(true);
+                sd2.setCanceledOnTouchOutside(true);
+                sd2.setContentText("Here's a message");
+                sd2.hideConfirmButton();
+                sd2.show();
                 break;
-            }
-            case R.id.error_sweetalert: {
-                showErrorSweetalert();
+            case R.id.under_text_test:
+                new Sweetalert(this)
+                        .setTitleText("Title")
+                        .setContentText("It's pretty, isn't it?")
+                        .show();
                 break;
-            }
-            case R.id.delete_confirmation_sweetalert: {
-                showDeleteSweetalert();
+            case R.id.styled_text_and_stroke:
+                new Sweetalert(this)
+                        .setTitleText("<font color='red'>Red</font> title")
+                        .setContentText("Big <font color='green'>green </font><b><i> bold</i></b>")
+                        .setContentTextSize(21)
+                        .setStrokeWidth(2)
+                        .show();
                 break;
-            }
-            case R.id.custom_sweetalert: {
-                showCustomSweetalert();
+            case R.id.error_text_test:
+                new Sweetalert(this, Sweetalert.ERROR_TYPE)
+                        .setTitleText("Oops...")
+                        .setContentText("Something went wrong!")
+                        .show();
                 break;
-            }
-        }
-    }
-
-    private void showLoadingSweetalert() {
-        Sweetalert pDialog = new Sweetalert(this, Sweetalert.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
-        pDialog.show();
-        new Handler(Looper.myLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                pDialog.dismissWithAnimation();
-            }
-        }, 2000);
-    }
-
-    private void showBasicSweetalert() {
-        new Sweetalert(this)
-                .setTitleText("Here's a message!")
-                .show();
-    }
-
-    private void showErrorSweetalert() {
-        new Sweetalert(this, Sweetalert.ERROR_TYPE)
-                .setTitleText("Oops...")
-                .setContentText("Something went wrong!")
-                .show();
-    }
-
-    private void showDeleteSweetalert() {
-        new Sweetalert(this, Sweetalert.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("Won't be able to recover this file!")
-                .setConfirmText("Yes, delete it!")
-                .setConfirmClickListener(new Sweetalert.OnSweetClickListener() {
-                    @Override
-                    public void onClick(Sweetalert sDialog) {
-                        sDialog.setTitleText("Loading").setContentText("Please wait...").changeAlertType(Sweetalert.PROGRESS_TYPE);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            public void run() {
-                                sDialog
-                                        .setTitleText("Deleted!")
-                                        .setContentText("Your imaginary file has been deleted!")
-                                        .setConfirmText("OK")
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(Sweetalert.SUCCESS_TYPE);
-                            }
-                        }, 2000);
+            case R.id.success_text_test:
+                new Sweetalert(this, Sweetalert.SUCCESS_TYPE)
+                        .setTitleText("Good job!")
+                        .setContentText("You clicked the button!")
+                        .show();
+                break;
+            case R.id.warning_confirm_test:
+                new Sweetalert(this, Sweetalert.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Won't be able to recover this file!")
+                        .setCancelButton("Yes, delete it!", sweetAlertDialog -> {
+                            // reuse previous dialog instance
+                            sweetAlertDialog
+                                    .setTitleText("Loading")
+                                    .setContentText("Please wait...")
+                                    .hideConfirmButton()
+                                    .changeAlertType(Sweetalert.PROGRESS_TYPE);
+                            new Handler(Looper.myLooper()).postDelayed(() -> sweetAlertDialog
+                                    .setTitleText("Deleted!")
+                                    .setContentText("Your imaginary file has been deleted!")
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(Sweetalert.SUCCESS_TYPE), 3000);
+                        })
+                        .show();
+                break;
+            case R.id.warning_cancel_test:
+                new Sweetalert(this, Sweetalert.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Won't be able to recover this file!")
+                        .setCancelText("No, cancel pls!")
+                        .setConfirmText("Yes, delete it!")
+                        .showCancelButton(true)
+                        .setCancelClickListener(sDialog -> {
+                            // reuse previous dialog instance, keep widget user state, reset them if you need
+                            sDialog.setTitleText("Cancelled!")
+                                    .setContentText("Your imaginary file is safe :)")
+                                    .setConfirmText("OK")
+                                    .showCancelButton(false)
+                                    .setCancelClickListener(null)
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(Sweetalert.ERROR_TYPE);
+                        })
+                        .setConfirmClickListener(sDialog -> sDialog.setTitleText("Deleted!")
+                                .setContentText("Your imaginary file has been deleted!")
+                                .setConfirmText("OK")
+                                .showCancelButton(false)
+                                .setCancelClickListener(null)
+                                .setConfirmClickListener(null)
+                                .changeAlertType(Sweetalert.SUCCESS_TYPE))
+                        .show();
+                break;
+            case R.id.custom_img_test:
+                new Sweetalert(this, Sweetalert.CUSTOM_IMAGE_TYPE)
+                        .setTitleText("Sweet!")
+                        .setContentText("Here's a custom image.")
+                        .setCustomImage(R.drawable.custom_img)
+                        .show();
+                break;
+            case R.id.progress_dialog:
+                final Sweetalert pDialog = new Sweetalert(this, Sweetalert.PROGRESS_TYPE)
+                        .setTitleText("Loading");
+                pDialog.show();
+                pDialog.setCancelable(false);
+                new CountDownTimer(800 * 7, 800) {
+                    public void onTick(long millisUntilFinished) {
+                        // you can change the progress bar color by ProgressHelper every 800 millis
+                        i++;
+                        switch (i) {
+                            case 0:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
+                                break;
+                            case 1:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
+                                break;
+                            case 2:
+                            case 6:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
+                                break;
+                            case 3:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
+                                break;
+                            case 4:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_80));
+                                break;
+                            case 5:
+                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.warning_stroke_color));
+                                break;
+                        }
                     }
-                })
-                .show();
-    }
 
-    private void showCustomSweetalert() {
-        Sweetalert.DARK_STYLE = true;
-        new Sweetalert(this, Sweetalert.ERROR_TYPE)
-                .setTitleText("<font color='red'>Red</font> title")
-                .setContentText("Big <font color='green'>green </font><b><i> bold</i></b>")
-                .setContentTextSize(21)
-                .setStrokeWidth(2)
-                .show();
-        Sweetalert.DARK_STYLE = false;
+                    public void onFinish() {
+                        i = -1;
+                        pDialog.setTitleText("Success!")
+                                .setConfirmText("OK")
+                                .changeAlertType(Sweetalert.SUCCESS_TYPE);
+                    }
+                }.start();
+                break;
+
+            case R.id.neutral_btn_test:
+                new Sweetalert(this, Sweetalert.NORMAL_TYPE)
+                        .setTitleText("Title")
+                        .setContentText("Three buttons dialog")
+                        .setConfirmText("Confirm")
+                        .setCancelText("Cancel")
+                        .setNeutralText("Neutral")
+                        .show();
+                break;
+
+            case R.id.disabled_btn_test:
+                final Sweetalert disabledBtnDialog = new Sweetalert(this, Sweetalert.NORMAL_TYPE)
+                        .setTitleText("Title")
+                        .setContentText("Disabled button dialog")
+                        .setConfirmText("OK")
+                        .setCancelText("Cancel")
+                        .setNeutralText("Neutral");
+
+                disabledBtnDialog.setOnShowListener(dialog -> disabledBtnDialog.getButton(Sweetalert.BUTTON_CONFIRM).setEnabled(false));
+                disabledBtnDialog.show();
+                break;
+
+            case R.id.custom_view_test:
+                final EditText editText = new EditText(this);
+                final CheckBox checkBox = new CheckBox(this);
+                editText.setText("Some edit text");
+                checkBox.setChecked(true);
+                checkBox.setText("Some checkbox");
+
+                if (Sweetalert.DARK_STYLE) {
+                    editText.setTextColor(Color.WHITE);
+                    checkBox.setTextColor(Color.WHITE);
+                }
+
+                LinearLayout linearLayout = new LinearLayout(getApplicationContext());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.addView(editText);
+                linearLayout.addView(checkBox);
+
+                Sweetalert dialog = new Sweetalert(this, Sweetalert.NORMAL_TYPE)
+                        .setTitleText("Custom view")
+                        .hideConfirmButton();
+
+                dialog.setCustomView(linearLayout);
+                dialog.show();
+                break;
+            case R.id.custom_btn_colors_test:
+                new Sweetalert(this, Sweetalert.NORMAL_TYPE)
+                        .setTitleText("Custom view")
+                        .setCancelButton("red", null)
+                        .setCancelButtonBackgroundColor(Color.RED)
+                        .setNeutralButton("cyan", null)
+                        .setNeutralButtonBackgroundColor(Color.CYAN)
+                        .setConfirmButton("blue", null)
+                        .setConfirmButtonBackgroundColor(Color.BLUE)
+                        .show();
+                break;
+
+        }
     }
 }

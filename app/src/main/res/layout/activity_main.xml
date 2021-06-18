@@ -1,57 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="#FFF">
 
-    <TextView
-        android:padding="4dp"
-        android:layout_margin="11dp"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_gravity="center|top">
 
-    <Button
-        android:id="@+id/loading_sweetalert"
-        android:padding="4dp"
-        android:layout_margin="11dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/loading_sweetalert"/>
+        <ImageView
+            android:id="@+id/logo_img"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_big" />
 
-    <Button
-        android:id="@+id/basic_sweetalert"
-        android:padding="4dp"
-        android:layout_margin="11dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/basic_sweetalert"/>
+        <CheckBox
+            android:id="@+id/dark_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/logo_img"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="@string/dark_style"
+            android:textColor="@android:color/black" />
 
-    <Button
-        android:id="@+id/error_sweetalert"
-        android:padding="4dp"
-        android:layout_margin="11dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/error_sweetalert"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo_img"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/delete_confirmation_sweetalert"
-        android:padding="4dp"
-        android:layout_margin="11dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete_confirmation_sweetalert"/>
 
-    <Button
-        android:id="@+id/custom_sweetalert"
-        android:padding="4dp"
-        android:layout_margin="11dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/custom_sweetalert"/>
+            <TextView
+                android:id="@+id/txt_0"
+                style="@style/description_style"
+                android:text="@string/show_material_progress" />
 
-</LinearLayout>
+            <Button
+                android:id="@+id/progress_dialog"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_1"
+                style="@style/description_style"
+                android:text="@string/a_basic_message" />
+
+            <Button
+                android:id="@+id/basic_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_1_1"
+                style="@style/description_style"
+                android:text="@string/a_basic_message_nwithout_buttons" />
+
+            <Button
+                android:id="@+id/basic_test_without_buttons"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_2"
+                style="@style/description_style"
+                android:text="@string/a_title_with_a_text_under" />
+
+            <Button
+                android:id="@+id/under_text_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                style="@style/description_style"
+                android:text="@string/styled_text_and_stroke" />
+
+            <Button
+                android:id="@+id/styled_text_and_stroke"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_3"
+                style="@style/description_style"
+                android:text="@string/show_error_message" />
+
+            <Button
+                android:id="@+id/error_text_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_4"
+                style="@style/description_style"
+                android:text="@string/a_success_message" />
+
+            <Button
+                android:id="@+id/success_text_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+
+            <TextView
+                android:id="@+id/txt_5"
+                style="@style/description_style"
+                android:text="@string/a_warning_message_with_a_listener_bind_to_the_confirm_button" />
+
+            <Button
+                android:id="@+id/warning_confirm_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_6"
+                style="@style/description_style"
+                android:text="@string/a_warning_message_with_listeners_bind_to_cancel_and_confirm_button" />
+
+            <Button
+                android:id="@+id/warning_cancel_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_7"
+                style="@style/description_style"
+                android:text="@string/a_message_with_a_custom_icon" />
+
+            <Button
+                android:id="@+id/custom_img_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_8"
+                style="@style/description_style"
+                android:text="@string/a_message_with_neutral_button" />
+
+            <Button
+                android:id="@+id/neutral_btn_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_9"
+                style="@style/description_style"
+                android:text="@string/disabled_ok_button" />
+
+            <Button
+                android:id="@+id/disabled_btn_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_10"
+                style="@style/description_style"
+                android:text="@string/custom_view" />
+
+            <Button
+                android:id="@+id/custom_view_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+            <TextView
+                android:id="@+id/txt_11"
+                style="@style/description_style"
+                android:text="@string/custom_btn_colors" />
+
+            <Button
+                android:id="@+id/custom_btn_colors_test"
+                style="@style/dialog_blue_button"
+                android:layout_margin="@dimen/mp10"
+                android:text="@string/try_me" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
+

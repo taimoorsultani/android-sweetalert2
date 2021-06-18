@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="mp1">0dp</dimen>
+    <dimen name="mp10">10dp</dimen>
 </resources>
