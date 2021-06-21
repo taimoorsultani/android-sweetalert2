@@ -48,7 +48,7 @@ Some screenshots of the new features:
 
 ## Setup
 
-The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
+The simplest way to use Sweetalert is to add the library as aar dependency to your build.
 
 **Maven**
 
@@ -80,7 +80,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
 
 Show material progress
 
-    SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+    Sweetalert pDialog = new Sweetalert(this, Sweetalert.PROGRESS_TYPE);
     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
     pDialog.setTitleText("Loading");
     pDialog.setCancelable(false);
@@ -88,7 +88,7 @@ Show material progress
 
 ![image](https://github.com/taimoorsultani/android-sweetalert2/raw/main/play_progress.gif)
 
-You can customize progress bar dynamically with materialish-progress methods via **SweetAlertDialog.getProgressHelper()**:
+You can customize progress bar dynamically with materialish-progress methods via **Sweetalert.getProgressHelper()**:
 
 - resetCount()
 - isSpinning()
@@ -116,27 +116,27 @@ more usages about progress, please see the sample.
 
 A basic message：
 
-    new SweetAlertDialog(this)
+    new Sweetalert(this)
         .setTitleText("Here's a message!")
         .show();
 
 A title with a text under：
 
-    new SweetAlertDialog(this)
+    new Sweetalert(this)
         .setTitleText("Here's a message!")
         .setContentText("It's pretty, isn't it?")
         .show();
 
 A error message：
 
-    new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+    new Sweetalert(this, Sweetalert.ERROR_TYPE)
         .setTitleText("Oops...")
         .setContentText("Something went wrong!")
         .show();
 
 A warning message：
 
-    new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    new Sweetalert(this, Sweetalert.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
@@ -144,14 +144,14 @@ A warning message：
 
 A success message：
 
-    new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+    new Sweetalert(this, Sweetalert.SUCCESS_TYPE)
         .setTitleText("Good job!")
         .setContentText("You clicked the button!")
         .show();
 
 A message with a custom icon：
 
-    new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+    new Sweetalert(this, Sweetalert.CUSTOM_IMAGE_TYPE)
         .setTitleText("Sweet!")
         .setContentText("Here's a custom image.")
         .setCustomImage(R.drawable.custom_img)
@@ -160,7 +160,7 @@ A message with a custom icon：
 A message with a custom view：
 
     final EditText editText = new EditText(this);
-    new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+    new Sweetalert(this, Sweetalert.NORMAL_TYPE)
             .setTitleText("Custom view")
             .setConfirmText("Ok")
             .setCustomView(editText)
@@ -168,19 +168,19 @@ A message with a custom view：
 
 Different ways to bind the listener to button：
 
-    new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    new Sweetalert(this, Sweetalert.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
-        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setConfirmClickListener(new Sweetalert.OnSweetClickListener() {
             @Override
-            public void onClick(SweetAlertDialog sDialog) {
+            public void onClick(Sweetalert sDialog) {
                 sDialog.dismissWithAnimation();
             }
         })
-        .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+        .setCancelButton("Cancel", new Sweetalert.OnSweetClickListener() {
             @Override
-            public void onClick(SweetAlertDialog sDialog) {
+            public void onClick(Sweetalert sDialog) {
                 sDialog.dismissWithAnimation();
             }
         })
@@ -188,7 +188,7 @@ Different ways to bind the listener to button：
 
 Disable button
 
-    final SweetAlertDialog disabledBtnDialog = new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+    final Sweetalert disabledBtnDialog = new Sweetalert(this, Sweetalert.NORMAL_TYPE)
             .setTitleText("Title")
             .setContentText("Disabled button dialog")
             .setConfirmText("Confirm")
@@ -197,26 +197,26 @@ Disable button
     disabledBtnDialog.setOnShowListener(new DialogInterface.OnShowListener() {
         @Override
         public void onShow(DialogInterface dialog) {
-            disabledBtnDialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).setEnabled(false);
+            disabledBtnDialog.getButton(Sweetalert.BUTTON_CONFIRM).setEnabled(false);
         }
     });
     disabledBtnDialog.show();
 
 **Change** the dialog style upon confirming：
 
-    new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    new Sweetalert(this, Sweetalert.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
-        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setConfirmClickListener(new Sweetalert.OnSweetClickListener() {
             @Override
-            public void onClick(SweetAlertDialog sDialog) {
+            public void onClick(Sweetalert sDialog) {
                 sDialog
                     .setTitleText("Deleted!")
                     .setContentText("Your imaginary file has been deleted!")
                     .setConfirmText("OK")
                     .setConfirmClickListener(null)
-                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                    .changeAlertType(Sweetalert.SUCCESS_TYPE);
             }
         })
         .show();
