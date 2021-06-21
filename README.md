@@ -61,7 +61,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     <dependency>
         <groupId>com.github.taimoorsultani</groupId>
         <artifactId>android-sweetalert2</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 
 **Gradle**
@@ -73,7 +73,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
     }
 
     dependencies {
-        implementation 'com.github.taimoorsultani:android-sweetalert2:1.0.0'
+        implementation 'com.github.taimoorsultani:android-sweetalert2:1.1.0'
     }
 
 ## Usage
