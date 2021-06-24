@@ -1,5 +1,6 @@
 package taimoor.sultani.sweetalert2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,18 +30,19 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class Sweetalert extends Dialog implements View.OnClickListener {
     private View mDialogView;
-    private AnimationSet mModalInAnim;
-    private AnimationSet mModalOutAnim;
-    private Animation mOverlayOutAnim;
-    private Animation mErrorInAnim;
-    private AnimationSet mErrorXInAnim;
-    private AnimationSet mSuccessLayoutAnimSet;
-    private Animation mSuccessBowAnim;
+    private final AnimationSet mModalInAnim;
+    private final AnimationSet mModalOutAnim;
+    private final Animation mOverlayOutAnim;
+    private final Animation mErrorInAnim;
+    private final AnimationSet mErrorXInAnim;
+    private final AnimationSet mSuccessLayoutAnimSet;
+    private final Animation mSuccessBowAnim;
     private TextView mTitleTextView;
     private TextView mContentTextView;
     private FrameLayout mCustomViewContainer;
     private View mCustomView;
     private String mTitleText;
+    private int mTitleSize;
     private String mContentText;
     private boolean mShowCancel;
     private boolean mShowContent;
@@ -58,7 +61,7 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
     private ImageView mCustomImage;
     private LinearLayout mButtonsContainer;
     private Button mConfirmButton;
-    private boolean mHideConfirmButton = false;
+    private boolean mShowConfirm = false;
     private Button mCancelButton;
     private Button mNeutralButton;
     private Integer mConfirmButtonBackgroundColor;
@@ -92,12 +95,6 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
 
     private final float defStrokeWidth;
     private float strokeWidth = 0;
-
-
-    public Sweetalert hideConfirmButton() {
-        this.mHideConfirmButton = true;
-        return this;
-    }
 
     public interface OnSweetClickListener {
         void onClick(Sweetalert sweetAlertDialog);
@@ -166,6 +163,7 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         mOverlayOutAnim.setDuration(120);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_dialog);
@@ -196,6 +194,7 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         mProgressHelper.setProgressWheel((ProgressWheel) findViewById(R.id.progressWheel));
 
         setTitleText(mTitleText);
+        setTitleTextSize(mTitleSize);
         setContentText(mContentText);
         setCustomView(mCustomView);
         setCancelText(mCancelText);
@@ -218,7 +217,7 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
 
-        mConfirmButton.setVisibility(mHideConfirmButton ? View.GONE : View.VISIBLE);
+        mConfirmButton.setVisibility(mShowConfirm ? View.VISIBLE : View.GONE);
 
         adjustButtonContainerVisibility();
 
@@ -264,7 +263,7 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
                 // restore all of views state before switching alert type
                 restore();
             }
-            mConfirmButton.setVisibility(mHideConfirmButton ? View.GONE : View.VISIBLE);
+            mConfirmButton.setVisibility(mShowConfirm ? View.VISIBLE : View.GONE);
             switch (mAlertType) {
                 case ERROR_TYPE:
                     mErrorFrame.setVisibility(View.VISIBLE);
@@ -315,6 +314,14 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
                 mTitleTextView.setVisibility(View.VISIBLE);
                 mTitleTextView.setText(Html.fromHtml(mTitleText));
             }
+        }
+        return this;
+    }
+
+    public Sweetalert setTitleTextSize(int sps) {
+        mTitleSize = sps;
+        if (mTitleTextView != null && mTitleSize != 0) {
+            mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sps);
         }
         return this;
     }
@@ -386,6 +393,14 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         mShowCancel = isShow;
         if (mCancelButton != null) {
             mCancelButton.setVisibility(mShowCancel ? View.VISIBLE : View.GONE);
+        }
+        return this;
+    }
+
+    public Sweetalert showConfirmButton(boolean isShow) {
+        mShowConfirm = isShow;
+        if (mConfirmButton != null) {
+            mConfirmButton.setVisibility(mShowConfirm ? View.VISIBLE : View.GONE);
         }
         return this;
     }

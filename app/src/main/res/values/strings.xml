@@ -9,14 +9,14 @@
     <string name="dark_style">Dark style</string>
     <string name="show_material_progress">Show material progress</string>
     <string name="try_me">Try me!</string>
-    <string name="a_basic_message">A basic message</string>
+    <string name="a_basic_message">A basic message with buttons</string>
     <string name="a_basic_message_nwithout_buttons">A basic message \nwithout buttons</string>
     <string name="a_title_with_a_text_under">A title with a text under</string>
     <string name="styled_text_and_stroke">Styled text and stroke</string>
     <string name="show_error_message">Show error message</string>
     <string name="a_success_message">A success message</string>
-    <string name="a_warning_message_with_a_listener_bind_to_the_confirm_button">A warning message, with a listener bind to the Confirm-button...</string>
-    <string name="a_warning_message_with_listeners_bind_to_cancel_and_confirm_button">A warning message, with listeners bind to Cancel and Confirm button...</string>
+    <string name="a_warning_message_with_a_listener_bind_to_the_confirm_button">A warning message, with a listener bind to the Confirm-button…</string>
+    <string name="a_warning_message_with_listeners_bind_to_cancel_and_confirm_button">A warning message, with listeners bind to Cancel and Confirm button…</string>
     <string name="a_message_with_a_custom_icon">A message with a custom icon</string>
     <string name="a_message_with_neutral_button">A message with neutral button</string>
     <string name="disabled_ok_button">Disabled OK button</string>
