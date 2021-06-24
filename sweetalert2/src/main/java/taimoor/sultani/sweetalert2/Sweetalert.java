@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -64,12 +66,12 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
     private boolean mShowConfirm = false;
     private Button mCancelButton;
     private Button mNeutralButton;
-    private Integer mConfirmButtonBackgroundColor;
-    private Integer mConfirmButtonTextColor;
-    private Integer mNeutralButtonBackgroundColor;
-    private Integer mNeutralButtonTextColor;
-    private Integer mCancelButtonBackgroundColor;
-    private Integer mCancelButtonTextColor;
+    private String mConfirmButtonBackgroundColor;
+    private String mConfirmButtonTextColor;
+    private String mNeutralButtonBackgroundColor;
+    private String mNeutralButtonTextColor;
+    private String mCancelButtonBackgroundColor;
+    private String mCancelButtonTextColor;
     private final ProgressHelper mProgressHelper;
     private FrameLayout mWarningFrame;
     private OnSweetClickListener mCancelClickListener;
@@ -379,9 +381,9 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
     private void applyStroke() {
         if (Float.compare(defStrokeWidth, strokeWidth) != 0) {
             Resources r = getContext().getResources();
-            setButtonBackgroundColor(mConfirmButton, r.getColor(R.color.main_green_color));
-            setButtonBackgroundColor(mNeutralButton, r.getColor(R.color.main_disabled_color));
-            setButtonBackgroundColor(mCancelButton, r.getColor(R.color.red_btn_bg_color));
+            setButtonBackgroundColor(mConfirmButton, "#6bd505");
+            setButtonBackgroundColor(mNeutralButton, "#838383");
+            setButtonBackgroundColor(mCancelButton, "#DD6B55");
         }
     }
 
@@ -442,45 +444,45 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public Sweetalert setConfirmButtonBackgroundColor(Integer color) {
+    public Sweetalert setConfirmButtonBackgroundColor(String color) {
         mConfirmButtonBackgroundColor = color;
         setButtonBackgroundColor(mConfirmButton, color);
         return this;
     }
 
-    public Integer getConfirmButtonBackgroundColor() {
+    public String getConfirmButtonBackgroundColor() {
         return mConfirmButtonBackgroundColor;
     }
 
-    public Sweetalert setNeutralButtonBackgroundColor(Integer color) {
+    public Sweetalert setNeutralButtonBackgroundColor(String color) {
         mNeutralButtonBackgroundColor = color;
         setButtonBackgroundColor(mNeutralButton, color);
         return this;
     }
 
-    public Integer getNeutralButtonBackgroundColor() {
+    public String getNeutralButtonBackgroundColor() {
         return mNeutralButtonBackgroundColor;
     }
 
-    public Sweetalert setCancelButtonBackgroundColor(Integer color) {
+    public Sweetalert setCancelButtonBackgroundColor(String color) {
         mCancelButtonBackgroundColor = color;
         setButtonBackgroundColor(mCancelButton, color);
         return this;
     }
 
-    public Integer getCancelButtonBackgroundColor() {
+    public String getCancelButtonBackgroundColor() {
         return mCancelButtonBackgroundColor;
     }
 
-    private void setButtonBackgroundColor(Button btn, Integer color) {
+    private void setButtonBackgroundColor(Button btn, String color) {
         if (btn != null && color != null) {
             Drawable[] drawableItems = ViewUtils.getDrawable(btn);
             if (drawableItems != null) {
                 GradientDrawable gradientDrawableUnChecked = (GradientDrawable) drawableItems[1];
                 //solid color
-                gradientDrawableUnChecked.setColor(color);
+                gradientDrawableUnChecked.setColor(Color.parseColor(color));
                 //stroke
-                gradientDrawableUnChecked.setStroke((int) strokeWidth, genStrokeColor(color));
+                gradientDrawableUnChecked.setStroke((int) strokeWidth, genStrokeColor(Color.parseColor(color)));
             }
         }
     }
@@ -492,39 +494,39 @@ public class Sweetalert extends Dialog implements View.OnClickListener {
         return Color.HSVToColor(hsv);
     }
 
-    public Sweetalert setConfirmButtonTextColor(Integer color) {
+    public Sweetalert setConfirmButtonTextColor(String color) {
         mConfirmButtonTextColor = color;
         if (mConfirmButton != null && color != null) {
-            mConfirmButton.setTextColor(mConfirmButtonTextColor);
+            mConfirmButton.setTextColor(Color.parseColor(mConfirmButtonTextColor));
         }
         return this;
     }
 
-    public Integer getConfirmButtonTextColor() {
+    public String getConfirmButtonTextColor() {
         return mConfirmButtonTextColor;
     }
 
-    public Sweetalert setNeutralButtonTextColor(Integer color) {
+    public Sweetalert setNeutralButtonTextColor(String color) {
         mNeutralButtonTextColor = color;
         if (mNeutralButton != null && color != null) {
-            mNeutralButton.setTextColor(mNeutralButtonTextColor);
+            mNeutralButton.setTextColor(Color.parseColor(mNeutralButtonTextColor));
         }
         return this;
     }
 
-    public Integer getNeutralButtonTextColor() {
+    public String getNeutralButtonTextColor() {
         return mNeutralButtonTextColor;
     }
 
-    public Sweetalert setCancelButtonTextColor(Integer color) {
+    public Sweetalert setCancelButtonTextColor(String color) {
         mCancelButtonTextColor = color;
         if (mCancelButton != null && color != null) {
-            mCancelButton.setTextColor(mCancelButtonTextColor);
+            mCancelButton.setTextColor(Color.parseColor(mCancelButtonTextColor));
         }
         return this;
     }
 
-    public Integer getCancelButtonTextColor() {
+    public String getCancelButtonTextColor() {
         return mCancelButtonTextColor;
     }
 

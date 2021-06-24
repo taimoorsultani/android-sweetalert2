@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -270,11 +272,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .showCancelButton(true)
                         .showConfirmButton(true)
                         .setCancelButton("red", null)
-                        .setCancelButtonBackgroundColor(Color.RED)
+                        .setCancelButtonBackgroundColor("#5B2C6F")
+                        .setCancelButtonTextColor("#D35400")
                         .setNeutralButton("cyan", null)
-                        .setNeutralButtonBackgroundColor(Color.CYAN)
+                        .setNeutralButtonBackgroundColor("#21618C")
+                        .setNeutralButtonTextColor("#2ECC71")
                         .setConfirmButton("blue", null)
-                        .setConfirmButtonBackgroundColor(Color.BLUE)
+                        .setConfirmButtonBackgroundColor("#117864")
+                        .setConfirmButtonTextColor("#EC7063")
                         .show();
                 break;
 

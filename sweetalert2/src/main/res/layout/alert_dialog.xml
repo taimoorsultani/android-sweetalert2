@@ -182,7 +182,7 @@
             android:paddingBottom="4dp"
             android:visibility="visible">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/cancel_button"
                 style="@style/dialog_blue_button"
                 android:layout_marginEnd="25dp"
@@ -191,7 +191,7 @@
                 tools:text="cancel"
                 tools:visibility="visible" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/neutral_button"
                 style="@style/dialog_blue_button"
                 android:layout_marginStart="-10dp"
@@ -201,13 +201,12 @@
                 tools:text="neutral"
                 tools:visibility="gone" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirm_button"
                 style="@style/dialog_blue_button"
                 android:text="@string/ok"
                 android:visibility="gone" />
         </LinearLayout>
-
 
     </LinearLayout>
 </FrameLayout>

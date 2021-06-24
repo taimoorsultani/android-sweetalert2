@@ -61,7 +61,7 @@ The simplest way to use Sweetalert is to add the library as aar dependency to yo
     <dependency>
         <groupId>com.github.taimoorsultani</groupId>
         <artifactId>android-sweetalert2</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
     </dependency>
 
 **Gradle**
@@ -73,7 +73,7 @@ The simplest way to use Sweetalert is to add the library as aar dependency to yo
     }
 
     dependencies {
-        implementation 'com.github.taimoorsultani:android-sweetalert2:1.2.0'
+        implementation 'com.github.taimoorsultani:android-sweetalert2:1.3.0'
     }
 
 ## Usage

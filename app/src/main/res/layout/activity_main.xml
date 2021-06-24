@@ -41,7 +41,7 @@
                 style="@style/description_style"
                 android:text="@string/show_material_progress" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/progress_dialog"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -52,7 +52,7 @@
                 style="@style/description_style"
                 android:text="@string/a_basic_message" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/basic_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -63,7 +63,7 @@
                 style="@style/description_style"
                 android:text="@string/a_basic_message_nwithout_buttons" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/basic_test_without_buttons"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -74,7 +74,7 @@
                 style="@style/description_style"
                 android:text="@string/a_title_with_a_text_under" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/under_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -84,7 +84,7 @@
                 style="@style/description_style"
                 android:text="@string/styled_text_and_stroke" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/styled_text_and_stroke"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -95,7 +95,7 @@
                 style="@style/description_style"
                 android:text="@string/show_error_message" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/error_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -106,7 +106,7 @@
                 style="@style/description_style"
                 android:text="@string/a_success_message" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/success_text_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -118,7 +118,7 @@
                 style="@style/description_style"
                 android:text="@string/a_warning_message_with_a_listener_bind_to_the_confirm_button" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/warning_confirm_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -129,7 +129,7 @@
                 style="@style/description_style"
                 android:text="@string/a_warning_message_with_listeners_bind_to_cancel_and_confirm_button" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/warning_cancel_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -140,7 +140,7 @@
                 style="@style/description_style"
                 android:text="@string/a_message_with_a_custom_icon" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/custom_img_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -151,7 +151,7 @@
                 style="@style/description_style"
                 android:text="@string/a_message_with_neutral_button" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/neutral_btn_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -162,7 +162,7 @@
                 style="@style/description_style"
                 android:text="@string/disabled_ok_button" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/disabled_btn_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -173,7 +173,7 @@
                 style="@style/description_style"
                 android:text="@string/custom_view" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/custom_view_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
@@ -184,7 +184,7 @@
                 style="@style/description_style"
                 android:text="@string/custom_btn_colors" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/custom_btn_colors_test"
                 style="@style/dialog_blue_button"
                 android:layout_margin="@dimen/mp10"
