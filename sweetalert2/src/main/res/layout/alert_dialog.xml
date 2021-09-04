@@ -188,7 +188,7 @@
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/red_button_background"
                 android:visibility="gone"
-                tools:text="cancel"
+                tools:text="@string/close"
                 tools:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatButton
